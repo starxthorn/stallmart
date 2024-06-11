@@ -8,9 +8,10 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import MainLoader from "./MainLoader";
 import { useCart } from "@/context/AuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideMenu from "./SideMenu";
 import Profile from "./Profile";
+import { UserType } from "@/types";
 
 const Navbar = () => {
   const session = useSession();
@@ -86,7 +87,11 @@ const Navbar = () => {
                   <>
                     <img
                       onClick={() => setProfile(true)}
-                      src={session?.data?.user?.image || ""}
+                      src={
+                        session?.data?.user?.image
+                          ? session.data.user.image
+                          : "https://w7.pngwing.com/pngs/753/432/png-transparent-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-people-thumbnail.png"
+                      }
                       alt="profile picture"
                       className="cursor-pointer rounded-full w-12 h-12"
                     />
