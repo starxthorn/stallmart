@@ -69,8 +69,8 @@ const Profile = (props: any) => {
             onClick={() => props.isprofile(false)}
           />
         </div>
-        <div className="px-6 lg:mt-8 mt-16 flex flex-col mb-5 justify-center items-center">
-          <div>
+        <div className="px-6 lg:mt-8 mt-16 flex flex-col mb-5">
+          <div className="flex items-center justify-center w-full">
             <Image
               src={user?.avatar!}
               width={150}
@@ -85,7 +85,10 @@ const Profile = (props: any) => {
           <h1 className="w-full mt-4 outline-none border border-gray-200 rounded-lg pl-3 py-2">
             {user?.name}
           </h1>
-          <label htmlFor="email" className="mt-5 font-medium text-lg self-start">
+          <label
+            htmlFor="email"
+            className="mt-5 font-medium text-lg self-start"
+          >
             Email
           </label>
           <h1 className="w-full mt-4 outline-none border border-gray-200 rounded-lg pl-3 py-2">
@@ -96,7 +99,7 @@ const Profile = (props: any) => {
               <Link href={"/admin/dashboard"} onClick={() => setLoading(true)}>
                 <button
                   type="button"
-                  className="w-full text-white bg-indigo-500 py-3 rounded-md mt-3"
+                  className="mt-10 bg-indigo-500 text-white py-3 rounded-md w-full"
                 >
                   {loading ? (
                     <>
@@ -113,7 +116,7 @@ const Profile = (props: any) => {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="w-full text-white bg-red-500 py-3 rounded-md mt-8"
+                className="w-full text-white bg-red-500 py-3 rounded-md mt-3"
               >
                 Logout
               </button>
