@@ -1,6 +1,7 @@
 "use client";
 import { ProductTypes } from "@/types";
 import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 interface CartContextTypes {
   cart: ProductTypes[];
@@ -10,6 +11,7 @@ interface CartContextTypes {
   handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   filteredProducts: ProductTypes[];
   total: number;
+  products: ProductTypes[];
 }
 
 export const CartContext = createContext<CartContextTypes | null>(null);
@@ -32,11 +34,13 @@ export const CartContextProvider = ({
     if (itemExists === -1) {
       cartitems.push({ product, quantity });
     }
+    toast("Added to cart");
     setCart(cartitems as ProductTypes[]);
     localStorage.setItem("cart", JSON.stringify(cartitems));
   };
 
   const handleremovecart = (product: ProductTypes) => {
+    toast("Removed from cart");
     let cartitems = [...cart];
     cartitems = cartitems.filter((item) => item?.product?._id !== product?._id);
     setCart(cartitems as ProductTypes[]);
@@ -107,6 +111,7 @@ export const CartContextProvider = ({
         setCart,
         handleSearch,
         filteredProducts,
+        products,
       }}
     >
       {children}

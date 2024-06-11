@@ -14,6 +14,7 @@ import Link from "next/link";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import MainLoader from "@/components/MainLoader";
+import { toast } from "react-toastify";
 
 const page = () => {
   const [orders, setOrders] = useState<OrderTypes[]>([]);
@@ -46,6 +47,7 @@ const page = () => {
         method: "DELETE",
       });
       if (res.ok) {
+        toast("Order deleted");
         router.push("/admin/orders");
       }
     } catch (error) {

@@ -7,6 +7,7 @@ import { CldImage } from "next-cloudinary";
 import { NavCategories } from "@/data";
 import { ImagesTypes, ProductTypes } from "@/types";
 import Button from "@/components/Button";
+import { toast } from "react-toastify";
 
 const page = () => {
   const router = useRouter();
@@ -81,6 +82,7 @@ const page = () => {
         body: JSON.stringify(product),
       });
       if (res.ok) {
+        toast("Product published");
         setProcess(true);
         router.push("/admin/products");
       }

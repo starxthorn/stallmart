@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const page = () => {
   const [showPassword, setShowPassword] = useState("show");
@@ -47,6 +48,7 @@ const page = () => {
         setMessage(data.message);
       }
       if (res.ok) {
+        toast("Logged In");
         await signIn("credentials", {
           email: user?.email,
           password: user?.password,

@@ -5,18 +5,16 @@ import { IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { UserType } from "@/types";
 import MainLoader from "./MainLoader";
+import Image from "next/image";
 
 const Profile = (props: any) => {
   const session = useSession();
   const [loading, setLoading] = useState(false);
   const [changes, setChanges] = useState(false);
   const [user, setUser] = useState<UserType | null>({
+    avatar: "",
     name: "",
     email: "",
-    province: "punjab",
-    city: "",
-    address: "",
-    phone: 0,
   });
 
   const getUser = async () => {
@@ -30,12 +28,9 @@ const Profile = (props: any) => {
       if (res.ok) {
         const data = await res.json();
         setUser({
+          avatar: data.response.avatar,
           name: data.response.name,
           email: data.response.email,
-          province: data.response.province || "punjab",
-          city: data.response.city,
-          address: data.response.address,
-          phone: data.response.phone,
         });
       }
     } catch (error) {
@@ -57,42 +52,8 @@ const Profile = (props: any) => {
     });
   };
 
-  const handleChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setChanges(true);
-    setUser({
-      ...user,
-      province: e.target.value,
-    });
-  };
-
-  const handlesubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(
-        `/api/access-single-user?id=${session.data?.user._id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        }
-      );
-      const data = await res.json();
-      if (res.ok) {
-        setUser({
-          name: data.response.name,
-          email: data.response.email,
-          province: data.response.province,
-          city: data.response.city,
-          address: data.response.address,
-          phone: data.response.phone,
-        });
-        props.isprofile(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const handleSignOut = () => {
+    signOut();
   };
 
   return (
@@ -108,80 +69,28 @@ const Profile = (props: any) => {
             onClick={() => props.isprofile(false)}
           />
         </div>
-        <form
-          onSubmit={handlesubmit}
-          className="px-10 lg:mt-8 mt-4 flex flex-col mb-5"
-        >
-          <label htmlFor="name" className="mt-3 font-medium">
+        <div className="px-6 lg:mt-8 mt-16 flex flex-col mb-5 justify-center items-center">
+          <div>
+            <Image
+              src={user?.avatar!}
+              width={150}
+              height={150}
+              alt={user?.name!}
+              className="rounded-full my-6"
+            />
+          </div>
+          <label htmlFor="name" className="mt-5 font-medium text-lg self-start">
             Name
           </label>
-          <h1 className="w-full mt-2 outline-none border border-gray-200 rounded-lg pl-3 py-2">
+          <h1 className="w-full mt-4 outline-none border border-gray-200 rounded-lg pl-3 py-2">
             {user?.name}
           </h1>
-          <label htmlFor="email" className="mt-3 font-medium">
+          <label htmlFor="email" className="mt-5 font-medium text-lg self-start">
             Email
           </label>
-          <h1 className="w-full mt-2 outline-none border border-gray-200 rounded-lg pl-3 py-2">
+          <h1 className="w-full mt-4 outline-none border border-gray-200 rounded-lg pl-3 py-2">
             {user?.email}
           </h1>
-          <label htmlFor="province" className="mt-3 font-medium">
-            Province
-          </label>
-          <select
-            value={user?.province}
-            required
-            onChange={handleChangeSelect}
-            className="w-full mt-2 outline-none border border-gray-200 rounded-lg pl-3 py-2"
-            name="province"
-          >
-            <option value="punjab">Punjab</option>
-            <option value="sindh">Sindh</option>
-            <option value="balochistan">Balochistan</option>
-            <option value="khyber pakhtunkhwa">Khyber Pakhtunkhwa</option>
-          </select>
-          <label htmlFor="city" className="mt-3 font-medium">
-            City
-          </label>
-          <input
-            type="text"
-            required
-            autoComplete="off"
-            name="city"
-            value={user?.city}
-            onChange={handlechange}
-            className="w-full mt-2 outline-none border border-gray-200 rounded-lg pl-3 py-2"
-          />
-          <label htmlFor="address" className="mt-3 font-medium">
-            Address
-          </label>
-          <input
-            type="text"
-            required
-            autoComplete="off"
-            name="address"
-            value={user?.address}
-            onChange={handlechange}
-            className="w-full mt-2 outline-none border border-gray-200 rounded-lg pl-3 py-2"
-          />
-          <label htmlFor="phone" className="mt-3 font-medium">
-            Phone No
-          </label>
-          <input
-            type="number"
-            required
-            autoComplete="off"
-            name="phone"
-            value={user?.phone}
-            onChange={handlechange}
-            className="w-full mt-2 outline-none border border-gray-200 rounded-lg pl-3 py-2"
-          />
-          <button
-            disabled={changes === false ? true : false}
-            type="submit"
-            className="w-full text-white disabled:opacity-80 bg-black py-3 rounded-md mt-8"
-          >
-            Save Changes
-          </button>
           {session?.data?.user?.role === "admin" ? (
             <>
               <Link href={"/admin/dashboard"} onClick={() => setLoading(true)}>
@@ -203,8 +112,8 @@ const Profile = (props: any) => {
               </Link>
               <button
                 type="button"
-                onClick={() => signOut()}
-                className="w-full text-white bg-red-500 py-3 rounded-md mt-3"
+                onClick={handleSignOut}
+                className="w-full text-white bg-red-500 py-3 rounded-md mt-8"
               >
                 Logout
               </button>
@@ -213,14 +122,14 @@ const Profile = (props: any) => {
             <>
               <button
                 type="button"
-                onClick={() => signOut()}
-                className="w-full text-white bg-red-500 py-3 rounded-md mt-3"
+                onClick={handleSignOut}
+                className="w-full text-white bg-red-500 py-3 rounded-md mt-8"
               >
                 Logout
               </button>
             </>
           )}
-        </form>
+        </div>
       </section>
     </>
   );

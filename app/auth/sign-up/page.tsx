@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const Page = () => {
   const router = useRouter();
@@ -48,6 +49,7 @@ const Page = () => {
         setMessage(data.message);
       }
       if (res.ok) {
+        toast("User Signed Up");
         router.push("/auth/sign-in");
       }
     } catch (error) {

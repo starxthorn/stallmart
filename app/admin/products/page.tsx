@@ -16,6 +16,7 @@ import { ProductTypes } from "@/types";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import MainLoader from "@/components/MainLoader";
+import { toast } from "react-toastify";
 
 const page = () => {
   const [Allproducts, setAllproducts] = useState<ProductTypes[]>([]);
@@ -41,6 +42,7 @@ const page = () => {
   }, []);
 
   const handleDeleteProduct = async (id: any) => {
+    toast("Product Deleted");
     setLoader(true);
     try {
       await fetch(`/api/access-single-product?id=${id}`, {
@@ -126,6 +128,7 @@ const page = () => {
                         </TableCell>
                         <TableCell>
                           <Link
+                            onClick={() => setLoader(true)}
                             href={`/admin/products/edit-single-product/${data._id}`}
                             className="hover:underline transition-all"
                           >

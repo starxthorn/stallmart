@@ -12,7 +12,7 @@ const page = ({ params }: { params: { id: number } }) => {
   const [product, setProduct] = useState<ProductTypes | null>();
   const [images, setImages] = useState<ImagesTypes[]>([]);
   const [quantity, setQuantity] = useState(1);
-  const { handleAddToCart, cart, handleremovecart } = useCart();
+  const { handleAddToCart, cart } = useCart();
   const [category, setCategory] = useState<string | null>(null);
 
   useEffect(() => {

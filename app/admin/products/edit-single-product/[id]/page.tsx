@@ -7,6 +7,7 @@ import { ProductTypes } from "@/types";
 import { CldImage } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const page = ({ params }: { params: { id: number } }) => {
   const router = useRouter();
@@ -93,6 +94,7 @@ const page = ({ params }: { params: { id: number } }) => {
       if (res.ok) {
         const data = await res.json();
         setProcess(true);
+        toast("Product saved");
         setProductdetails({
           title: data.response.title,
           description: data.response.description,
@@ -116,6 +118,7 @@ const page = ({ params }: { params: { id: number } }) => {
         method: "DELETE",
       });
       if (res.ok) {
+        toast("Product Deleted");
         router.push("/admin/products");
       }
     } catch (error) {

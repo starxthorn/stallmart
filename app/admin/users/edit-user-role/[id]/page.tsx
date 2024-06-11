@@ -6,6 +6,7 @@ import MainLoader from "@/components/MainLoader";
 import { useSession } from "next-auth/react";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const page = ({ params }: { params: { id: number } }) => {
   const session = useSession();
@@ -54,6 +55,7 @@ const page = ({ params }: { params: { id: number } }) => {
         method: "DELETE",
       });
       if (res.ok) {
+        toast("User deleted");
         router.push("/admin/users");
       }
     } catch (error) {
@@ -62,11 +64,10 @@ const page = ({ params }: { params: { id: number } }) => {
   };
 
   const handleChangeRole = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const name = e.target.name;
     const value = e.target.value;
     setUser({
       ...(user as any),
-      [name]: value,
+      role: value,
     });
   };
 
@@ -83,6 +84,7 @@ const page = ({ params }: { params: { id: number } }) => {
       const data = await res.json();
       if (res.ok) {
         setProcess(true);
+        toast("User saved");
         router.push("/admin/users");
         setUser({
           _id: data.response._id,

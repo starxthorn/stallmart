@@ -15,6 +15,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import MainLoader from "@/components/MainLoader";
+import { toast } from "react-toastify";
 
 const page = ({ params }: { params: { id: number } }) => {
   const [singleOrder, setsingleOrder] = useState<OrderTypes | null>({});
@@ -57,6 +58,7 @@ const page = ({ params }: { params: { id: number } }) => {
         body: JSON.stringify(singleOrder),
       });
       if (res.ok) {
+        toast("Order saved");
         router.push("/admin/orders");
       }
     } catch (error) {
@@ -71,6 +73,7 @@ const page = ({ params }: { params: { id: number } }) => {
         method: "DELETE",
       });
       if (res.ok) {
+        toast("Order deleted");
         router.push("/admin/orders");
         window.location.reload();
       }

@@ -4,6 +4,8 @@ import { AuthSessionProvider } from "@/context/Authenticate";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { CartContextProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
@@ -24,6 +26,19 @@ export default function RootLayout({
           <CartContextProvider>
             <Navbar />
             {children}
+            <ToastContainer
+              position="top-right"
+              autoClose={1000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              bodyClassName="toastBody"
+            />
             <Footer />
           </CartContextProvider>
         </AuthSessionProvider>

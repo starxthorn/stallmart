@@ -15,6 +15,7 @@ import { UserType } from "@/types";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import MainLoader from "@/components/MainLoader";
+import { toast } from "react-toastify";
 
 const page = () => {
   const [Allusers, setAllusers] = useState<UserType[]>([]);
@@ -41,6 +42,7 @@ const page = () => {
 
   const handleDeleteProduct = async (id: any) => {
     setLoader(true);
+    toast("User Deleted");
     try {
       await fetch(`/api/access-single-user?id=${id}`, {
         method: "DELETE",

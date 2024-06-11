@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const page = () => {
   const { cart, total } = useCart();
@@ -32,7 +33,7 @@ const page = () => {
       if (res.ok) {
         const data = await res.json();
         setUser({
-          province: data.response.province,
+          province: data.response.province || "punjab",
           city: data.response.city,
           address: data.response.address,
           phone: data.response.phone,
@@ -126,6 +127,7 @@ const page = () => {
       );
       const data = await res.json();
       if (res.ok) {
+        toast("Order placed successfully");
         setUser({
           province: data.response.province,
           city: data.response.city,
@@ -144,7 +146,10 @@ const page = () => {
     <>
       <section className="w-full flex lg:flex-row flex-col-reverse lg:items-start justify-center">
         <div className="lg:h-[100vh] lg:w-1/2 w-full flex lg:items-start lg:pr-20 pt-20 lg:justify-end">
-          <form className="w-full lg:w-[30vw] flex flex-col lg:px-0 px-8 lg:pb-0 pb-20" onSubmit={handlesubmit}>
+          <form
+            className="w-full lg:w-[30vw] flex flex-col lg:px-0 px-8 lg:pb-0 pb-20"
+            onSubmit={handlesubmit}
+          >
             <Link href={"/"}>
               <h1 className="text-3xl lg:text-5xl font-black">STALL MART</h1>
             </Link>
@@ -228,7 +233,9 @@ const page = () => {
               <Button
                 key={"key"}
                 Buttontype="submit"
-                styles={`hover:opacity-70 py-[12px] lg:mt-0 mt-5 ${loader && "opacity-70"}`}
+                styles={`hover:opacity-70 py-[12px] lg:mt-0 mt-5 ${
+                  loader && "opacity-70"
+                }`}
               >
                 {loader ? "processing..." : "CHECKOUT (COD)"}
               </Button>
