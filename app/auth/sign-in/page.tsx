@@ -1,6 +1,7 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { redirect, usePathname } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
@@ -9,13 +10,16 @@ const page = () => {
   const [message, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
   const session = useSession();
+  const pathname = usePathname();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  if (session.data) {
-    window.location.href = "/";
+  if (session.status !== "loading") {
+    if (session.data && pathname.startsWith("/auth")) {
+      redirect("/");
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

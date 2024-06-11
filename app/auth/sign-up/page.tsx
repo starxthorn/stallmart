@@ -1,13 +1,14 @@
 "use client";
-import Button from "@/components/Button";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
 const Page = () => {
   const router = useRouter();
+  const session = useSession();
+  const pathname = usePathname();
   const [showPassword, setShowPassword] = useState("show");
   const [message, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
@@ -17,6 +18,11 @@ const Page = () => {
     password: "",
   });
 
+  if (session.status !== "loading") {
+    if (session.data && pathname.startsWith("/auth")) {
+      redirect("/");
+    }
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
