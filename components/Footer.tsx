@@ -4,16 +4,18 @@ import React, { useState } from "react";
 import { FaFacebook, FaInstagram, FaPhone, FaYoutube } from "react-icons/fa";
 import { FaMapLocation } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const Footer = () => {
   const [email, setEmail] = useState({
-    email: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    toast("Message sent");
     e.preventDefault();
     try {
-      setEmail({ email: "" });
+      setEmail({ message: "" });
     } catch (error) {
       console.log(error);
     }
@@ -58,10 +60,10 @@ const Footer = () => {
               className="flex lg:flex-row lg:gap-4 flex-col lg:items-center justify-center items-start"
             >
               <input
-                onChange={(e) => setEmail({ email: e.target.value })}
+                onChange={(e) => setEmail({ message: e.target.value })}
                 type="text"
                 name="email"
-                value={email.email}
+                value={email.message}
                 required
                 autoComplete="off"
                 className="border border-gray-300 py-2 pl-3 text-md bg-none outline-none rounded-md lg:w-[20vw] w-full mt-4"
