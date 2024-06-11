@@ -49,14 +49,14 @@ const Navbar = () => {
           orders is 14th June! */}
             Standard Delivery in 4-5 Business Days
           </h1>
-          <nav className="flex items-center lg:px-8 px-4 lg:uppercase justify-between py-4 lg:pt-6 pt-2">
-            <div className="flex items-center justify-center gap-2">
+          <nav className="flex items-center lg:px-8 px-3 lg:uppercase justify-between py-4 lg:pt-6 pt-2">
+            <div className="flex items-center justify-center gap-1">
               <IoMenu
                 onClick={() => setMenu(true)}
                 className="lg:hidden block lg:text-4xl text-3xl"
               />
               <Link href={"/"}>
-                <h1 className="lg:text-4xl text-3xl font-black cursor-pointer rounded-md">
+                <h1 className="lg:text-4xl text-2xl font-black cursor-pointer rounded-md">
                   Stall Mart
                 </h1>
               </Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
               />
               <CiSearch className="mr-5 text-2xl" />
             </div>
-            <div className="flex items-center justify-center lg:gap-3 gap-2">
+            <div className="flex items-center justify-center lg:gap-3 gap-1">
               <Link href={"/cart"} className="relative">
                 <IoBagHandleOutline className="lg:text-4xl text-3xl cursor-pointer text-black hover:text-yellow-600 transition-all" />
                 <div

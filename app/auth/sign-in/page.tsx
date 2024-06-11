@@ -74,7 +74,7 @@ const page = () => {
     <>
       <section className="w-full h-[100vh] flex items-center lg:pb-0 pb-60 lg:pt-0 pt-20 justify-center">
         <form
-          className="lg:border w-96 lg:min-w-[25vw] lg:border-gray-300 rounded-md flex flex-col lg:p-4 p-2 lg:px-7"
+          className="lg:border w-96 lg:min-w-[25vw] lg:border-gray-300 rounded-md flex flex-col lg:p-4 p-2 lg:px-7 px-5"
           onSubmit={handleSubmit}
         >
           <h1 className="text-3xl font-bold mt-2">Sign In to Stall Mart</h1>
