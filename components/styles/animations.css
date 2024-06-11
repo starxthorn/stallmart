@@ -1,0 +1,21 @@
+.load-animation {
+    border: 7px solid black;
+    border-right: 7px solid transparent;
+    animation: spin .5s infinite;
+}
+
+@media (width < 900px) {
+    .load-animation{
+        border: 5px solid black;
+        border-right: 5px solid transparent;
+    }
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

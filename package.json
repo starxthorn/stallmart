@@ -1,0 +1,37 @@
+{
+  "name": "stallmart",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.2.10",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.1",
+    "next": "14.2.3",
+    "next-auth": "^4.24.7",
+    "next-cloudinary": "^6.6.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-element-to-jsx-string": "^15.0.0",
+    "react-icons": "^5.2.1",
+    "react-responsive-carousel": "^3.2.23",
+    "recharts": "^2.12.7",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
