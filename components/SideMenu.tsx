@@ -13,7 +13,7 @@ const SideMenu = (props: any) => {
             onClick={() => props.ismenu(false)}
           />
         </div>
-        <div className="items-center justify-center mt-20 uppercase flex flex-col gap-6 text-xl mb-5">
+        <div className="items-center justify-center mt-10 uppercase flex flex-col gap-6 text-xl mb-5">
           {NavCategories?.map((data, id) => {
             return (
               <>
@@ -22,7 +22,7 @@ const SideMenu = (props: any) => {
                   key={id}
                   onClick={() => props.ismenu(false)}
                 >
-                  <h1 className="text-gray-600 transition hover:text-yellow-600 text-md font-medium">
+                  <h1 className="text-gray-600 transition hover:text-yellow-600 text-sm font-medium">
                     {data}
                   </h1>
                 </Link>

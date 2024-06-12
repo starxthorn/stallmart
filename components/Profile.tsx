@@ -69,17 +69,17 @@ const Profile = (props: any) => {
             onClick={() => props.isprofile(false)}
           />
         </div>
-        <div className="px-6 lg:mt-8 mt-16 flex flex-col mb-5">
+        <div className="px-6 lg:mt-8 mt-0 flex flex-col mb-5">
           <div className="flex items-center justify-center w-full">
             <Image
               src={user?.avatar!}
-              width={150}
-              height={150}
+              width={120}
+              height={120}
               alt={user?.name!}
               className="rounded-full my-6"
             />
           </div>
-          <label htmlFor="name" className="mt-5 font-medium text-lg self-start">
+          <label htmlFor="name" className="lg:mt-5 mt-2 font-medium text-lg self-start">
             Name
           </label>
           <h1 className="w-full mt-4 outline-none border border-gray-200 rounded-lg pl-3 py-2">

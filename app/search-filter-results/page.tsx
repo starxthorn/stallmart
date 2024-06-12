@@ -12,7 +12,7 @@ const page = () => {
     <>
       {filteredProducts && filteredProducts.length >= 1 ? (
         <>
-          <section className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4 lg:px-10 px-5 mb-40 mt-56">
+          <section className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 lg:px-10 px-4 lg:gap-8 gap-5 mb-40 lg:mt-56 mt-48">
             {filteredProducts?.map((data, id) => {
               return (
                 <ProductCard

@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <main className="mt-10">
         <Hero />
-        <div className="mx-auto w-[95vw] mb-20">
+        <div className="mx-auto lg:w-[95vw] w-[92vw] mb-20">
           <BestSellers />
           <NewProducts />
         </div>

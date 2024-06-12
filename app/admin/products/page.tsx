@@ -82,20 +82,22 @@ const page = () => {
     <>
       <AdminWrapper>
         <div className="flex items-center justify-between mt-3">
-          <h1 className="font-black text-2xl">Our Products</h1>
-          <div className="flex items-center justify-between border border-gray-300 rounded-lg w-[60rem] backdrop-blur-sm pl-4 py-3">
-            <input
-              type="text"
-              onChange={handleFilterProducts}
-              placeholder="search products"
-              className="border-none placeholder:text-gray-600 placeholder:font-light h-full w-full outline-none"
-            />
-            <CiSearch className="mr-5 text-2xl" />
-          </div>
+          <h1 className="font-black lg:text-2xl text-xl">Our Products</h1>
           <div className="flex items-center justify-center gap-4">
-            <Link href={"/admin/products/add-new-product"}>
-              <Button styles="py-[13px]">Add New</Button>
-            </Link>
+            <div className="flex items-center justify-between border border-gray-300 rounded-lg w-[50vw] backdrop-blur-sm pl-4 py-3">
+              <input
+                type="text"
+                onChange={handleFilterProducts}
+                placeholder="search products"
+                className="border-none placeholder:text-gray-600 placeholder:font-light h-full w-full outline-none"
+              />
+              <CiSearch className="mr-5 text-2xl" />
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <Link href={"/admin/products/add-new-product"}>
+                <Button styles="py-[13px]">Add New</Button>
+              </Link>
+            </div>
           </div>
         </div>
         <Table>

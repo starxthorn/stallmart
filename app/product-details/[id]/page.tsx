@@ -82,27 +82,27 @@ const page = ({ params }: { params: { id: number } }) => {
           <div className="lg:w-[40vw] w-full py-3 mt-6 lg:mt-0 lg:px-10 md:px-8 px-3">
             <h1
               style={{ lineHeight: "1.2" }}
-              className="lg:text-5xl font-black text-3xl capitalize text-black"
+              className="lg:text-5xl font-black text-2xl capitalize text-black"
             >
               {product?.title}
             </h1>
-            <h1 className="text-lg font-normal my-3">
+            <h1 className="lg:text-lg text-sm font-normal my-3">
               Tax included. <span className="underline">Shipping</span>{" "}
               calculated at checkout.
             </h1>
-            <h1 className="font-medium text-xl text-black capitalize">
+            <h1 className="font-medium lg:text-xl text-sm text-black capitalize">
               {product?.category}
             </h1>
-            <h1 className="text-3xl font-bold text-black mt-4">
+            <h1 className="text-3xl font-bold text-black lg:mt-4 mt-2">
               Rs.{product?.price}
             </h1>
-            <h1 className="text-black mt-5 text-lg leading-relaxed">
+            <h1 className="text-black mt-5 lg:text-lg text-md leading-relaxed">
               {product?.description}
             </h1>
             <div className="mt-6 flex items-start justify-start">
               {product?.stock! >= 1 ? (
                 <>
-                  <h1 className="rounded-md border border-green-500 lg:text-md font-semibold text-green-600 bg-green-200 p-1 px-2">
+                  <h1 className="rounded-md border border-green-500 lg:text-md font-semibold text-green-600 bg-green-200 p-1 px-2 text-sm">
                     In Stock
                   </h1>
                 </>
@@ -110,13 +110,13 @@ const page = ({ params }: { params: { id: number } }) => {
                 <>
                   {product?.stock! <= 2 && product?.stock! !== 0 ? (
                     <>
-                      <h1 className="rounded-md border border-red-500 lg:text-md font-semibold text-red-600 bg-red-200 p-1 px-2">
+                      <h1 className="rounded-md border border-red-500 lg:text-md font-semibold text-red-600 bg-red-200 p-1 px-2 text-sm">
                         Low Stock
                       </h1>
                     </>
                   ) : (
                     <>
-                      <h1 className="rounded-md border border-red-500 lg:text-md font-semibold text-red-600 bg-red-200 p-1 px-2">
+                      <h1 className="rounded-md border border-red-500 lg:text-md font-semibold text-red-600 bg-red-200 p-1 px-2 text-sm">
                         Out of Stock
                       </h1>
                     </>
@@ -131,7 +131,7 @@ const page = ({ params }: { params: { id: number } }) => {
             >
               <button
                 onClick={handledecrease}
-                className="bg-gray-50 border cursor-pointer py-2 border-gray-200 rounded-md px-6 lg:text-lg text-md"
+                className="bg-gray-50 border cursor-pointer py-2 border-gray-200 rounded-md lg:px-6 px-4 lg:text-lg text-md"
               >
                 -
               </button>
@@ -140,7 +140,7 @@ const page = ({ params }: { params: { id: number } }) => {
               </h2>
               <button
                 onClick={handleincrease}
-                className="bg-gray-50 border cursor-pointer py-2 border-gray-200 rounded-md px-6 lg:text-lg text-md"
+                className="bg-gray-50 border cursor-pointer py-2 border-gray-200 rounded-md lg:px-6 px-4 lg:text-lg text-md"
               >
                 +
               </button>
@@ -155,7 +155,7 @@ const page = ({ params }: { params: { id: number } }) => {
                 onClick={() =>
                   handleAddToCart(product as ProductTypes, quantity)
                 }
-                className="bg-black disabled:opacity-80 py-4 text-xl text-white rounded-lg w-full my-5"
+                className="bg-black disabled:opacity-80 py-4 lg:text-xl text-md text-white rounded-full w-full my-5"
               >
                 {cart
                   .map((item) => item?.product?._id)

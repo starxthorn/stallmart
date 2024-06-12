@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 const Hero = () => {
   return (
     <>
-      <main className="w-full mt-48 -z-10">
+      <main className="w-full mt-40 lg:mt-44 -z-10">
         <Carousel
           autoPlay={true}
           infiniteLoop={true}
@@ -41,7 +41,6 @@ const Hero = () => {
           </div>
         </Carousel>
       </main>
-      ;
     </>
   );
 };

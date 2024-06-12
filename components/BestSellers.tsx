@@ -38,18 +38,18 @@ const BestSellers = () => {
     <>
       <section>
         <div className="flex items-center justify-between my-10">
-          <h1 className="lg:text-3xl text-xl font-bold uppercase">
+          <h1 className="lg:text-3xl text-lg font-bold uppercase">
             Our Best Sellers
           </h1>
           <Link
             onClick={() => setLoader(true)}
             href={"/best-sellers"}
-            className="text-indigo-500 text-md flex items-center cursor-pointer justify-center gap-2"
+            className="text-indigo-500 text-sm flex items-center cursor-pointer justify-center gap-2"
           >
             See all <FaArrowRight className="text-xs" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 gap-4">
           {products
             .map((data, id) => {
               return (

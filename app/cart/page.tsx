@@ -35,14 +35,13 @@ const page = () => {
   return (
     <>
       <section className="container mx-auto lg:mt-60 mt-56 mb-56">
-        <div className="lg:px-0 px-3">
-          <Table>
+        <div className="lg:px-0 md:px-6 px-4">
+          <Table className="overflow-y-hidden">
             <TableHeader>
               <TableRow>
                 <TableHead>Product</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Price x Qty</TableHead>
-                <TableHead className="pr-4">Delete</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -50,19 +49,19 @@ const page = () => {
                 cart.map((item, id) => {
                   return (
                     <TableRow key={id}>
-                      <TableCell className="text-xl capitalize">
+                      <TableCell className="lg:text-xl capitalize">
                         <Image
                           alt={item?.product?.title!}
-                          width={140}
-                          height={140}
+                          width={120}
+                          height={120}
                           className="rounded-lg"
                           src={item?.product?.images?.[0]?.url!}
                         />
                       </TableCell>
-                      <TableCell className="lg:text-xl capitalize">
-                        {item?.product?.title}
+                      <TableCell className="lg:text-xl text-xs capitalize">
+                        {item?.product?.title?.slice(0, 25)}..
                       </TableCell>
-                      <TableCell className="lg:text-xl capitalize">
+                      <TableCell className="lg:text-xl text-xs capitalize">
                         {item?.quantity} x {item?.product?.price}
                       </TableCell>
                       <TableCell className="lg:text-xl capitalize">
@@ -79,12 +78,12 @@ const page = () => {
             </TableBody>
           </Table>
         </div>
-        <div className="w-full flex items-center justify-end ">
-          <div className="mt-10 lg:mx-0 mx-5 bg-gray-50 w-full lg:w-[20vw] p-6 lg:rounded-lg">
+        <div className="w-full flex items-center justify-end">
+          <div className="mt-10 lg:mx-0 mx-5 bg-gray-50 w-full lg:w-[20vw] md:w-[25vw] p-6 py-8 lg:rounded-lg">
             <h1 className="text-black text-2xl font-black capitalize">
               SubTotal: <span className="self-end">{total}</span>
             </h1>
-            <h1 className="mt-5">
+            <h1 className="mt-5 lg:text-md text-sm">
               Tax included. <span className="underline">Shipping </span>
               calculated at checkout.
             </h1>

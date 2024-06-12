@@ -83,7 +83,7 @@ const page = () => {
       <AdminWrapper>
         <div className="flex items-center justify-between mt-3">
           <h1 className="font-black text-3xl">Our Users</h1>
-          <div className="flex items-center justify-between border border-gray-300 rounded-lg w-[25rem] backdrop-blur-sm pl-4 py-3">
+          <div className="flex items-center justify-between border border-gray-300 rounded-lg w-[50vw] backdrop-blur-sm pl-4 py-3">
             <input
               type="text"
               onChange={handleFilterUsers}

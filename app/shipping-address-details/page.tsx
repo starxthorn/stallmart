@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/Button";
+import ProductCard from "@/components/ProductCard";
 import { useCart } from "@/context/AuthContext";
 import { UserType } from "@/types";
 import { useSession } from "next-auth/react";
@@ -217,12 +218,12 @@ const page = () => {
               className="lg:min-w-[30vw] mt-2 outline-none w-full border border-gray-200 rounded-lg pl-3 py-2"
             />
             <div className="mt-10">
-              <h1 className="text-sm">
+              <h1 className="lg:text-sm text-xs">
                 <span className="text-yellow-500">Note: </span>Your Information
                 will be <span className="underline">saved</span> for next time
               </h1>
             </div>
-            <div className="flex lg:flex-row flex-col lg:items-center items-start lg:justify-between mt-4">
+            <div className="flex lg:flex-row flex-col lg:items-center items-start lg:justify-between mt-4 mb-8">
               <button
                 onClick={() => router.push("/")}
                 type="button"
@@ -243,35 +244,25 @@ const page = () => {
           </form>
         </div>
         <div className="bg-gray-50 lg:h-[100vh] lg:pb-0 pb-10 lg:w-1/2 w-full flex flex-col lg:items-start lg:pl-20 pl-4 pt-20 lg:justify-start">
-          <div className="flex flex-col gap-10">
+          <div className="grid grid-cols-2 gap-3">
             {cart &&
               cart.map((item, id) => {
                 return (
-                  <>
-                    <div
-                      className="flex items-start justify-start gap-10 mr-6"
+                  <div className="relative">
+                    <ProductCard
+                      // route="/product-details"
+                      // clicked={item?.product?._id}
                       key={id}
-                    >
-                      <div className="relative">
-                        <Image
-                          className="rounded-lg"
-                          src={item.product?.images?.[0]?.url!}
-                          width={120}
-                          height={120}
-                          alt={item.product?.title!}
-                        />
-                        <div className="absolute p-1 text-xs px-2 border-4 border-gray-50 rounded-full bg-yellow-500 text-white -top-2 -right-5">
-                          {item.quantity}
-                        </div>
-                      </div>
-                      <h1 className="capitalize font-medium w-40 mt-3">
-                        {item.product?.title}
-                      </h1>
-                      <h2 className="font-bold mt-6 text-xl">
-                        Rs.{item.product?.price! * item.quantity!}
-                      </h2>
+                      _id={item?.product?._id}
+                      title={item?.product?.title}
+                      category={item?.product?.category}
+                      price={item?.product?.price}
+                      image={item?.product?.images?.[0]?.url}
+                    />
+                    <div className="absolute p-1 text-xs px-2 border-4 border-gray-50 rounded-full bg-yellow-500 text-white -top-2 -right-5">
+                      {item.quantity}
                     </div>
-                  </>
+                  </div>
                 );
               })}
           </div>
@@ -289,6 +280,11 @@ const page = () => {
               <h1 className="text-xl font-bold">Total: </h1>
               <h1 className="text-xl font-bold">Rs. {total + shippingCost}</h1>
             </div>
+            <h1 className="lg:text-sm text-center text-xs font-normal my-3">
+              <span className="text-yellow-500">Note:</span> Tax included.{" "}
+              <span className="underline">Shipping</span> calculated at
+              checkout.
+            </h1>
           </div>
         </div>
       </section>
