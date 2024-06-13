@@ -56,7 +56,7 @@ const Navbar = () => {
                 className="lg:hidden block md:block lg:text-4xl text-2xl md:text-3xl"
               />
               <Link href={"/"}>
-                <h1 className="lg:text-4xl text-2xl md:text-3xl font-black cursor-pointer rounded-md">
+                <h1 className="lg:text-5xl text-2xl md:text-3xl font-black cursor-pointer rounded-md">
                   Stall Mart
                 </h1>
               </Link>
@@ -116,7 +116,7 @@ const Navbar = () => {
             />
             <CiSearch className="mr-5 text-2xl" />
           </div>
-          <div className="lg:flex hidden items-center justify-center gap-5 cursor-pointer uppercase text-center w-full mt-4">
+          <div className="lg:flex hidden items-center justify-center lg:gap-8 gap-5 cursor-pointer uppercase text-center w-full mt-4">
             {NavCategories.map((data, id) => {
               return (
                 <>

@@ -17,26 +17,26 @@ const Hero = () => {
         >
           <div className="relative">
             <img
-              src="slide1.jpg"
-              className="aspect-[1/1] lg:h-[60vh] md:aspect-auto object-cover"
+              src="one.png"
+              // className="aspect-[1/1] lg:h-[70vh] md:aspect-auto object-cover"
             />
           </div>
           <div className="relative">
             <img
-              src="slide2.jpg"
-              className="aspect-[1/1] lg:h-[60vh] md:aspect-auto object-cover"
+              src="two.png"
+              // className="aspect-[1/1] lg:h-[60vh] md:aspect-auto object-cover"
             />
           </div>
           <div className="relative">
             <img
-              src="slide3.jpg"
-              className="aspect-[1/1] lg:h-[60vh] md:aspect-auto object-cover"
+              src="three.png"
+              // className="aspect-[1/1] lg:h-[60vh] md:aspect-auto object-cover"
             />
           </div>
           <div className="relative">
             <img
-              src="slide4.jpg"
-              className="aspect-[1/1] lg:h-[60vh] md:aspect-auto object-cover"
+              src="four.png"
+              // className="aspect-[1/1] lg:h-[60vh] md:aspect-auto object-cover"
             />
           </div>
         </Carousel>

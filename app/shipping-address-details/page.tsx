@@ -250,8 +250,6 @@ const page = () => {
                 return (
                   <div className="relative">
                     <ProductCard
-                      // route="/product-details"
-                      // clicked={item?.product?._id}
                       key={id}
                       _id={item?.product?._id}
                       title={item?.product?.title}

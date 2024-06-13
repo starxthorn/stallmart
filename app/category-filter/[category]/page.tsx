@@ -1,30 +1,13 @@
 "use client";
 import ProductCard from "@/components/ProductCard";
+import { useCart } from "@/context/AuthContext";
 import { ProductTypes } from "@/types";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const page = ({ params }: { params: { category: string } }) => {
   const [catProducts, setCatProducts] = useState<ProductTypes[]>([]);
-  const [products, setProducts] = useState<ProductTypes[]>([]);
-
-  const getAllProducts = async () => {
-    try {
-      const res = await fetch(`/api/access-products`, {
-        method: "GET",
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setProducts(data.response);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getAllProducts();
-  }, []);
+  const { products } = useCart();
 
   useEffect(() => {
     setCatProducts(
